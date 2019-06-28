@@ -28,6 +28,9 @@ set colorcolumn=80
 " Draw line numbers
 set number
 
+" Enable pasting from clipboard
+set paste
+
 " Enable syntax highlighting
 syntax on
 
