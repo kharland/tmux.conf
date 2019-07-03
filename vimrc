@@ -3,17 +3,35 @@
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
+"
+" Run :PlugInstall after loading
 call plug#begin('~/.vim/plugged')
 
-":PlugInstall
+" Horizon colorscheme
 Plug 'ntk148v/vim-horizon'
 
 ":GoInstallBinaries
 Plug 'fatih/vim-go'
+
+" View filesystem tree
+Plug 'scrooloose/nerdtree'
+
+" Automatic code completion
+" See https://github.com/Shougo/deoplete.nvim
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
 call plug#end()
 
 " Configure vim-go
-let g:go_metalinter_autosave = 1
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = 'goimports'
 
 " General settings
 color horizon
